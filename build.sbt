@@ -1,3 +1,5 @@
+import bintray.Keys._
+
 sbtPlugin := true
 
 organization := "com.jamesward"
@@ -16,6 +18,12 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.1" % "test"
 )
 
+publishMavenStyle := false
+
 bintraySettings
+
+repository in bintray := "sbt-plugins"
+
+bintrayOrganization in bintray := None
 
 com.typesafe.sbt.SbtGit.versionWithGit
