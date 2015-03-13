@@ -21,9 +21,3 @@ libraryDependencies ++= Seq(
 bintraySettings
 
 com.typesafe.sbt.SbtGit.versionWithGit
-
-scriptedSettings
-
-scriptedLaunchOpts <+= version apply { v => "-Dplugin.version="+v }
-
-scriptedBufferLog := false
