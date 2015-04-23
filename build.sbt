@@ -26,4 +26,6 @@ repository in bintray := "sbt-plugins"
 
 bintrayOrganization in bintray := None
 
-com.typesafe.sbt.SbtGit.versionWithGit
+enablePlugins(GitVersioning)
+
+git.useGitDescribe := true

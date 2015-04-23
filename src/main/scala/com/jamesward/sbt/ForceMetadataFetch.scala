@@ -8,8 +8,9 @@ import sbt.{IO, File}
 
 object ForceMetadataFetch {
 
-  def apply(username: String, password: String, sandbox: Boolean, sourceDir: File, unpackagedComponents: Map[String, Seq[String]]): Set[File] = {
-    println("Fetching Metadata: " + unpackagedComponents)
+  def apply(username: String, password: String, sandbox: Boolean, sourceDir: File, unpackagedComponents: Map[String, Seq[String]], packagedComponents: Seq[String]): Set[File] = {
+    println("Fetching Unpackaged Metadata: " + unpackagedComponents)
+    println("Fetching Packaged Metadata: " + packagedComponents)
     println("Storing in: " + sourceDir)
 
     val loginUrl = if (sandbox) { ForceMetadataUtil.SANDBOX_URL } else { ForceMetadataUtil.LOGIN_URL }
@@ -30,6 +31,7 @@ object ForceMetadataFetch {
     val retrieveRequest = new RetrieveRequest()
     retrieveRequest.setApiVersion(ForceMetadataUtil.API_VERSION)
     retrieveRequest.setUnpackaged(unpackaged)
+    retrieveRequest.setPackageNames(packagedComponents.toArray)
 
     val asyncResult = metadataConnection.retrieve(retrieveRequest)
 

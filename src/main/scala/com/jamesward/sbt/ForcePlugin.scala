@@ -13,6 +13,7 @@ object ForcePlugin extends AutoPlugin {
     lazy val sandbox = SettingKey[Boolean]("sandbox", "Salesforce Sandbox")
     lazy val sourceDir = SettingKey[File]("source-dir", "Salesforce Source Directory")
     lazy val unpackagedComponents = SettingKey[Map[String, Seq[String]]]("unpackaged-components", "Unpackaged Metadata Components")
+    lazy val packagedComponents = SettingKey[Seq[String]]("packaged-components", "Packaged Metadata Components")
     lazy val deploy = TaskKey[Unit]("deploy", "Deploy the metadata")
     lazy val fetch = TaskKey[Set[File]]("fetch", "Fetch the metadata")
   }
@@ -25,8 +26,9 @@ object ForcePlugin extends AutoPlugin {
     sandbox := false,
     sourceDir := new File("salesforce"),
     unpackagedComponents := Map.empty[String, Seq[String]],
+    packagedComponents := Seq.empty[String],
     deploy := ForceMetadataDeploy(username.value, password.value, sandbox.value, sourceDir.value),
-    fetch := ForceMetadataFetch(username.value, password.value, sandbox.value, sourceDir.value, unpackagedComponents.value)
+    fetch := ForceMetadataFetch(username.value, password.value, sandbox.value, sourceDir.value, unpackagedComponents.value, packagedComponents.value)
   )
 
   override lazy val projectSettings = inConfig(Force)(baseForceSettings)

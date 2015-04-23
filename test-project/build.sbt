@@ -8,4 +8,4 @@ username in Force := sys.env("SALESFORCE_USERNAME")
 
 password in Force := sys.env("SALESFORCE_PASSWORD")
 
-unpackagedComponents in Force := Map("Apex" -> Array("*"))
+unpackagedComponents in Force := Map("ApexClass" -> Seq("*"))
