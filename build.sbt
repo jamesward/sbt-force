@@ -1,28 +1,24 @@
-import bintray.Keys._
-
 sbtPlugin := true
 
 organization := "com.jamesward"
 
 name := "sbt-force"
 
-licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
+licenses += "MIT" -> url("http://opensource.org/licenses/MIT")
 
 javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.12.3"
 
 libraryDependencies ++= Seq(
   "com.force.api" % "force-metadata-api" % "29.0.0",
   "com.force.api" % "force-partner-api" % "29.0.0",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 )
 
 publishMavenStyle := false
 
-bintraySettings
-
-repository in bintray := "sbt-plugins"
+bintrayRepository := "sbt-plugins"
 
 bintrayOrganization in bintray := None
 
