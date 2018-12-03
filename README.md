@@ -7,7 +7,7 @@ Usage
 
 Add the plugin in your `project/plugins.sbt` file:
 
-    addSbtPlugin("com.jamesward" % "sbt-force" % "0.0.2")
+    addSbtPlugin("com.jamesward" % "sbt-force" % "0.0.3")
 
 
 Enable the plugin and set its config in your `build.sbt` file:
